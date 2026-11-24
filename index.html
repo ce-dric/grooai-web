@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GrooAI — AI education, automation and applied AI software</title>
+<meta name="description" content="GrooAI (그루에이아이) is an independent AI studio in Daejeon, South Korea. We deliver generative AI and LLM training, workflow automation and custom AI agents, and applied AI software built on real data and documents." />
+<link rel="canonical" href="https://grooai.dev/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1b2a'/%3E%3Cpath d='M20 44V20h12a8 8 0 0 1 0 16h-4' fill='none' stroke='%236ee7b7' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='44' cy='42' r='4' fill='%236ee7b7'/%3E%3C/svg%3E" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="GrooAI" />
+<meta property="og:title" content="GrooAI — Practical AI, built and taught" />
+<meta property="og:description" content="Generative AI and LLM training, workflow automation, and applied AI software. Based in Daejeon, South Korea." />
+<meta property="og:url" content="https://grooai.dev/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ko_KR" />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#0d1b2a" />
+<style>
+  :root{
+    --ink:#0d1b2a;
+    --ink-2:#152a3d;
+    --paper:#ffffff;
+    --paper-2:#f6f8fa;
+    --line:#e3e8ee;
+    --body:#41505f;
+    --muted:#6b7b8c;
+    --accent:#0f9d76;
+    --accent-soft:#6ee7b7;
+    --accent-wash:#e7f7f1;
+    --radius:16px;
+    --max:1080px;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+            "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", Arial, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--body);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+  }
+  h1,h2,h3{color:var(--ink);line-height:1.18;letter-spacing:-0.02em;margin:0}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .skip{position:absolute;left:-9999px}
+  .skip:focus{left:16px;top:16px;background:#fff;padding:10px 14px;border-radius:8px;z-index:99}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,27,42,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;letter-spacing:-0.01em}
+  .brand:hover{text-decoration:none}
+  .mark{width:30px;height:30px;flex:0 0 30px}
+  .brand small{display:block;font-size:11px;font-weight:500;color:#9db0c2;letter-spacing:.02em}
+  .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;align-items:center}
+  .nav ul a{color:#c9d6e2;font-size:14.5px;font-weight:500}
+  .nav ul a:hover{color:#fff;text-decoration:none}
+  .nav .cta{
+    background:var(--accent);color:#04180f;padding:9px 16px;border-radius:999px;
+    font-weight:700;font-size:14px;
+  }
+  .nav .cta:hover{background:var(--accent-soft);text-decoration:none}
+  @media (max-width:760px){
+    .nav ul li:not(:last-child){display:none}
+  }
+
+  /* hero */
+  .hero{
+    background:
+      radial-gradient(900px 420px at 78% -10%, rgba(110,231,183,.22), transparent 62%),
+      radial-gradient(700px 380px at 8% 8%, rgba(38,98,168,.30), transparent 60%),
+      var(--ink);
+    color:#e9f1f7;
+    padding:88px 0 96px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-soft);font-weight:700;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent-soft);opacity:.7}
+  .hero h1{
+    color:#fff;font-size:clamp(2.2rem,5.4vw,3.9rem);max-width:19ch;margin-bottom:22px;
+    letter-spacing:-0.035em;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent-soft)}
+  .hero .lead{font-size:clamp(1.02rem,1.6vw,1.2rem);max-width:60ch;color:#c4d3e0;margin:0 0 12px}
+  .hero .lead-ko{font-size:1rem;color:#9db0c2;max-width:60ch;margin:0 0 34px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{text-decoration:none;transform:translateY(-1px)}
+  .btn-primary{background:var(--accent-soft);color:#062018}
+  .btn-primary:hover{background:#8ff0c9}
+  .btn-ghost{border:1px solid rgba(255,255,255,.28);color:#eaf3f9}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.6)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:44px;padding:0;list-style:none}
+  .chips li{
+    font-size:13px;color:#c4d3e0;border:1px solid rgba(255,255,255,.16);
+    padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.04);
+  }
+
+  /* sections */
+  section{padding:84px 0}
+  .section-head{max-width:64ch;margin-bottom:40px}
+  .kicker{
+    font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 12px;
+  }
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:14px}
+  .section-head p{margin:0;font-size:1.02rem}
+  .section-head .ko{color:var(--muted);font-size:.96rem;margin-top:8px}
+
+  /* about */
+  .about{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1.35fr .95fr;gap:52px;align-items:start}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;gap:32px}}
+  .about p{margin:0 0 16px}
+  .card-facts{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 20px;box-shadow:0 1px 2px rgba(13,27,42,.04);
+  }
+  .card-facts h3{font-size:15px;margin-bottom:16px;letter-spacing:0}
+  dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:14.5px}
+  dt{color:var(--muted)}
+  dd{margin:0;color:var(--ink-2);font-weight:600}
+
+  /* services */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+  .service{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;display:flex;flex-direction:column;gap:12px;
+    transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+  .service:hover{border-color:#bfe9d9;box-shadow:0 12px 30px rgba(13,27,42,.07);transform:translateY(-2px)}
+  .service .num{
+    width:34px;height:34px;border-radius:10px;background:var(--accent-wash);color:var(--accent);
+    display:grid;place-items:center;font-weight:800;font-size:14px;
+  }
+  .service h3{font-size:1.14rem}
+  .service .ko{color:var(--muted);font-size:.92rem;margin-top:-6px}
+  .service p{margin:0;font-size:.96rem}
+  .service ul{margin:4px 0 0;padding-left:18px;font-size:.92rem;color:var(--body)}
+  .service li{margin:5px 0}
+  .service li::marker{color:var(--accent-soft)}
+
+  /* approach */
+  .approach{background:var(--ink);color:#d7e3ec;border-top:1px solid rgba(255,255,255,.06)}
+  .approach h2{color:#fff}
+  .approach .kicker{color:var(--accent-soft)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step}
+  @media (max-width:860px){.steps{grid-template-columns:1fr}}
+  .step{
+    border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);
+    padding:26px;background:rgba(255,255,255,.03);
+  }
+  .step h3{color:#fff;font-size:1.05rem;margin-bottom:8px}
+  .step h3::before{
+    counter-increment:step;content:counter(step,decimal-leading-zero);
+    display:block;font-size:12px;letter-spacing:.16em;color:var(--accent-soft);margin-bottom:10px;
+  }
+  .step p{margin:0;font-size:.94rem;color:#bccbd8}
+  .step .ko{display:block;color:#8fa3b4;font-size:.88rem;margin-top:8px}
+
+  /* contact */
+  .contact{background:var(--paper)}
+  .contact-box{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;
+    border:1px solid var(--line);border-radius:22px;padding:40px;background:var(--paper-2);
+  }
+  @media (max-width:860px){.contact-box{grid-template-columns:1fr;padding:28px}}
+  .contact-box h2{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:12px}
+  .mail{
+    display:inline-flex;align-items:center;gap:10px;margin-top:20px;
+    font-size:clamp(1.02rem,2vw,1.22rem);font-weight:700;color:var(--ink);
+    border-bottom:2px solid var(--accent-soft);padding-bottom:4px;
+  }
+  .mail:hover{text-decoration:none;color:var(--accent)}
+  .contact-list{list-style:none;margin:0;padding:0;font-size:.95rem}
+  .contact-list li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px}
+  .contact-list li:last-child{border-bottom:0}
+  .contact-list span:first-child{color:var(--muted);min-width:82px;font-size:.86rem;text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
+  .contact-list span:last-child{color:var(--ink-2);font-weight:600}
+
+  footer{background:var(--ink);color:#93a7b8;padding:34px 0;font-size:13.5px}
+  .foot{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+  .foot .legal{display:flex;flex-wrap:wrap;gap:8px 18px}
+  .foot a{color:#c9d6e2}
+  .foot strong{color:#dbe6ef}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#152a3d"/>
+        <path d="M20 44V20h12a8 8 0 0 1 0 16h-4" fill="none" stroke="#6ee7b7" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="44" cy="42" r="4" fill="#6ee7b7"/>
+      </svg>
+      <span>GrooAI<small>그루에이아이</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#approach">How we work</a></li>
+        <li><a class="cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow">GrooAI · Daejeon, South Korea</p>
+      <h1>Practical AI, <em>built</em> and <em>taught</em>.</h1>
+      <p class="lead">
+        GrooAI is an independent AI studio working with universities, public institutions and
+        companies. We run hands-on training on generative AI and large language models, and we
+        build the automation and software that puts those ideas to work.
+      </p>
+      <p class="lead-ko">
+        생성형 AI·LLM 실무 교육과 업무 자동화, 그리고 데이터와 문서 위에 세운 실용 AI 소프트웨어를 만듭니다.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:changwoo.dev@gmail.com?subject=GrooAI%20inquiry">
+          Start a conversation
+          <span aria-hidden="true">→</span>
+        </a>
+        <a class="btn btn-ghost" href="#services">What we do</a>
+      </div>
+      <ul class="chips">
+        <li>Generative AI &amp; LLM training</li>
+        <li>Workflow automation</li>
+        <li>Custom AI agents</li>
+        <li>Document &amp; data applications</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <p class="kicker">About GrooAI</p>
+        <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:18px">A small studio with an engineer’s and a teacher’s habits.</h2>
+        <p>
+          GrooAI was founded by <strong>Changwoo Song</strong>, an AI instructor and software
+          developer based in Daejeon. He teaches generative AI practice at universities and
+          institutions, and builds automation and AI applications for the people he teaches. That
+          loop — teaching, then shipping — is how the studio works.
+        </p>
+        <p>
+          Engagements are deliberately small and concrete: a workshop that leaves a team able to use
+          the tools on its own work, or a pipeline that removes a repetitive task from someone’s
+          week. Everything we build is meant to be handed over and operated by the client’s own team.
+        </p>
+        <p class="ko" style="color:var(--muted)">
+          그루에이아이는 송창우 대표가 운영하는 1인 AI 스튜디오입니다. 대학·기관·기업에서 생성형 AI 실무를
+          가르치고, 그 현장에서 나온 문제를 자동화와 소프트웨어로 직접 만듭니다.
+        </p>
+      </div>
+      <aside class="card-facts">
+        <h3>Company details</h3>
+        <dl>
+          <dt>Company</dt><dd>GrooAI (그루에이아이)</dd>
+          <dt>Representative</dt><dd>Changwoo Song (송창우)</dd>
+          <dt>Focus</dt><dd>AI education · automation · applied AI software</dd>
+          <dt>Location</dt><dd>Daejeon, South Korea</dd>
+          <dt>Founded</dt><dd>2026</dd>
+          <dt>Contact</dt><dd><a href="mailto:changwoo.dev@gmail.com">changwoo.dev@gmail.com</a></dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Services</p>
+        <h2>Three things, done properly.</h2>
+        <p>Each engagement starts from the work a team already does — and ends with something they can run themselves.</p>
+        <p class="ko">교육, 자동화, 개발. 필요한 부분만 정확하게 맡습니다.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="service">
+          <div class="num" aria-hidden="true">01</div>
+          <h3>AI Education &amp; Workshops</h3>
+          <p class="ko">생성형 AI·LLM 실무 교육</p>
+          <p>
+            Instructor-led sessions for universities, public institutions and companies, built
+            around the participants’ own tasks rather than a feature tour.
+          </p>
+          <ul>
+            <li>Prompt and context design for real work</li>
+            <li>LLM workflows for research, documents and knowledge management</li>
+            <li>AI-assisted development and office automation</li>
+          </ul>
+        </article>
+
+        <article class="service">
+          <div class="num" aria-hidden="true">02</div>
+          <h3>AI Automation &amp; Agents</h3>
+          <p class="ko">업무 자동화 파이프라인 · 맞춤형 에이전트</p>
+          <p>
+            Repetitive processes turned into reliable pipelines, and agents that handle a defined
+            job with the tools and data a team already has.
+          </p>
+          <ul>
+            <li>Document intake, summarising and routing</li>
+            <li>Data collection, reporting and scheduled jobs</li>
+            <li>Agent workflows connected to existing services</li>
+          </ul>
+        </article>
+
+        <article class="service">
+          <div class="num" aria-hidden="true">03</div>
+          <h3>Applied AI Software</h3>
+          <p class="ko">데이터·문서 기반 실용 AI 애플리케이션</p>
+          <p>
+            Small, focused applications that make a team’s own documents and data answerable and
+            usable — built to run without a large platform behind them.
+          </p>
+          <ul>
+            <li>Retrieval and question answering over internal documents</li>
+            <li>Tools for research, writing and structured data</li>
+            <li>Prototypes that go into real use, not demos</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="approach" id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">How we work</p>
+        <h2 style="color:#fff">Understand, build small, hand over.</h2>
+        <p style="color:#bccbd8">Short cycles, working software, and no dependency on us afterwards.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Understand the work</h3>
+          <p>We start with the task as it is actually done today, including the parts that are hard to explain on paper.</p>
+          <span class="ko">현장의 실제 업무 흐름부터 확인합니다.</span>
+        </div>
+        <div class="step">
+          <h3>Build the smallest version</h3>
+          <p>A narrow, working version goes into use early, so the team can tell us what is wrong while it still costs little to change.</p>
+          <span class="ko">작게 만들어 빨리 써 보고, 그 피드백으로 고칩니다.</span>
+        </div>
+        <div class="step">
+          <h3>Hand it over</h3>
+          <p>Documentation, training and a clear owner inside the team, so the result keeps working without us in the room.</p>
+          <span class="ko">문서와 교육을 남기고, 팀이 직접 운영할 수 있게 인계합니다.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <p class="kicker">Contact</p>
+          <h2>Tell us what you are trying to do.</h2>
+          <p style="margin:0">
+            A short description of the task, the team, and the deadline is enough to start. We reply
+            in English or Korean.
+          </p>
+          <p style="margin:6px 0 0;color:var(--muted);font-size:.94rem">
+            하시려는 일과 팀, 일정만 간단히 알려 주시면 됩니다. 한국어·영어 모두 가능합니다.
+          </p>
+          <a class="mail" href="mailto:changwoo.dev@gmail.com">
+            <span aria-hidden="true">✉</span> changwoo.dev@gmail.com
+          </a>
+        </div>
+        <ul class="contact-list">
+          <li><span>Company</span><span>GrooAI (그루에이아이)</span></li>
+          <li><span>Representative</span><span>Changwoo Song (송창우)</span></li>
+          <li><span>Location</span><span>361 Dosan-ro, Seo-gu, Daejeon, Republic of Korea</span></li>
+          <li><span>Languages</span><span>Korean, English</span></li>
+          <li><span>Business reg.</span><span>104-47-04055</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="legal">
+      <span>© 2026 <strong>GrooAI (그루에이아이)</strong></span>
+      <span>Business Reg. 104-47-04055</span>
+      <span>Daejeon, South Korea</span>
+    </div>
+    <div>
+      <a href="mailto:changwoo.dev@gmail.com">changwoo.dev@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GrooAI",
+  "alternateName": "그루에이아이",
+  "url": "https://grooai.dev/",
+  "email": "changwoo.dev@gmail.com",
+  "foundingDate": "2026-09-10",
+  "founder": {
+    "@type": "Person",
+    "name": "Changwoo Song",
+    "alternateName": "송창우",
+    "jobTitle": "Founder, AI Instructor & Software Developer"
+  },
+  "description": "Independent AI studio in Daejeon, South Korea, providing generative AI and LLM training, workflow automation and custom AI agents, and applied AI software.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "KR",
+    "addressRegion": "Daejeon",
+    "addressLocality": "Seo-gu",
+    "streetAddress": "361 Dosan-ro"
+  },
+  "knowsLanguage": ["ko", "en"],
+  "areaServed": "KR"
+}
+</script>
+</body>
+</html>
